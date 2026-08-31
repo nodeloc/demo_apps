@@ -1,0 +1,62 @@
+{
+  "slug": "daily-thread",
+  "name": "Daily thread",
+  "entry": "src/main.js",
+  "scopes": [
+    "kv",
+    "schedule",
+    "post.write"
+  ],
+  "surface": "service",
+  "placement": "many",
+  "triggers": [],
+  "domains": [],
+  "settings": [
+    {
+      "key": "category_id",
+      "label": {
+        "en": "Category to post in",
+        "zh_CN": "发到哪个分类"
+      },
+      "type": "integer",
+      "required": true,
+      "description": {
+        "en": "Nothing is posted until this is set.",
+        "zh_CN": "不填就一直不会发帖。"
+      }
+    },
+    {
+      "key": "title",
+      "label": {
+        "en": "Title",
+        "zh_CN": "标题"
+      },
+      "type": "string",
+      "description": {
+        "en": "{date} becomes 2026-08-30. Leave blank for the default.",
+        "zh_CN": "{date} 会替换成 2026-08-30。留空用默认标题。"
+      }
+    },
+    {
+      "key": "body",
+      "label": {
+        "en": "Opening post",
+        "zh_CN": "开帖正文"
+      },
+      "type": "text"
+    },
+    {
+      "key": "every_hours",
+      "label": {
+        "en": "How often, in hours",
+        "zh_CN": "间隔多少小时"
+      },
+      "type": "integer",
+      "default": 24,
+      "description": {
+        "en": "168 for a weekly thread.",
+        "zh_CN": "填 168 就是每周一次。"
+      }
+    }
+  ]
+}

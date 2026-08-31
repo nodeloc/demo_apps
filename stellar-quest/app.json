@@ -1,0 +1,11 @@
+{
+  "slug": "stellar-quest",
+  "name": "星球探索",
+  "entry": "src/main.js",
+  "scopes": ["kv", "kv.shared", "points", "points.spend", "ui", "webview"],
+  "surface": "webview",
+  "placement": "single",
+  "triggers": [],
+  "domains": [],
+  "settings": []
+}

@@ -1,0 +1,72 @@
+{
+  "slug": "node-notice",
+  "name": "Node notice",
+  "entry": "src/main.js",
+  "scopes": [
+    "kv",
+    "post.read",
+    "post.write",
+    "moderate.topic"
+  ],
+  "surface": "service",
+  "placement": "many",
+  "triggers": [
+    "topic_created"
+  ],
+  "domains": [],
+  "settings": [
+    {
+      "key": "notice",
+      "label": {
+        "en": "Notice",
+        "zh_CN": "公告"
+      },
+      "type": "text",
+      "required": true,
+      "description": {
+        "en": "Posted on new topics in this node, in your own words. Markdown works. {username} becomes the author's name.",
+        "zh_CN": "发在本节点的新主题下，用你自己的话写。支持 Markdown。{username} 会替换成发帖人的用户名。"
+      }
+    },
+    {
+      "key": "audience",
+      "label": {
+        "en": "Show it to",
+        "zh_CN": "展示给"
+      },
+      "type": "enum",
+      "options": ["newcomers", "everyone"],
+      "default": "newcomers",
+      "description": {
+        "en": "\"newcomers\" says it once to each person, the first time they open a topic here. \"everyone\" says it on every topic — nobody can say they were not told, at the cost of regulars learning to scroll past it.",
+        "zh_CN": "「newcomers」对每个人只说一次，在他们第一次在这里发主题时。「everyone」每个主题都说——谁都不能说没被告知，代价是老用户会学会直接划过去。"
+      }
+    },
+    {
+      "key": "pin",
+      "label": {
+        "en": "Keep it at the top",
+        "zh_CN": "保持在顶部"
+      },
+      "type": "boolean",
+      "default": true,
+      "description": {
+        "en": "Pins the notice so it stays above the replies. Needs this app installed in a node, not site-wide.",
+        "zh_CN": "把公告置顶，使其始终在回复上方。需要本应用装在某个节点上，而不是全站。"
+      }
+    },
+    {
+      "key": "skip_staff",
+      "label": {
+        "en": "Skip staff topics",
+        "zh_CN": "跳过管理人员的主题"
+      },
+      "type": "boolean",
+      "default": true,
+      "description": {
+        "en": "Do not post the notice under topics opened by staff. They wrote the rules.",
+        "zh_CN": "不在管理人员发的主题下发公告——规则就是他们写的。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "slug": "sky-raid",
+  "name": "Sky raid",
+  "entry": "src/main.js",
+  "scopes": ["kv", "kv.shared", "webview"],
+  "surface": "webview",
+  "placement": "single",
+  "triggers": []
+}

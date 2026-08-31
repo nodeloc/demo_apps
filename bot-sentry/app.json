@@ -1,0 +1,144 @@
+{
+  "slug": "bot-sentry",
+  "name": "Bot sentry",
+  "entry": "src/main.js",
+  "scopes": [
+    "kv",
+    "kv.app",
+    "post.read",
+    "flag.create",
+    "http"
+  ],
+  "surface": "service",
+  "placement": "many",
+  "triggers": [
+    "post_flagged",
+    "post_created",
+    "topic_created"
+  ],
+  "domains": [
+    "api.openai.com",
+    "api.anthropic.com",
+    "generativelanguage.googleapis.com",
+    "api.deepseek.com",
+    "api.moonshot.cn",
+    "api.siliconflow.cn",
+    "open.bigmodel.cn",
+    "dashscope.aliyuncs.com"
+  ],
+  "settings": [
+    {
+      "key": "endpoint",
+      "label": {
+        "en": "API endpoint",
+        "zh_CN": "API 地址"
+      },
+      "type": "url",
+      "required": true,
+      "description": {
+        "en": "An OpenAI-compatible chat completions URL. Its host must be one this app is approved to reach.",
+        "zh_CN": "OpenAI 兼容的 chat completions 地址。它的主机必须在本应用已获批的域名列表里。"
+      }
+    },
+    {
+      "key": "model",
+      "label": {
+        "en": "Model",
+        "zh_CN": "模型"
+      },
+      "type": "string",
+      "required": true,
+      "description": {
+        "en": "The model name, as your provider spells it.",
+        "zh_CN": "模型名称，按你的服务商的写法填。"
+      }
+    },
+    {
+      "key": "api_key",
+      "label": {
+        "en": "API key",
+        "zh_CN": "API 密钥"
+      },
+      "type": "secret",
+      "required": true,
+      "description": {
+        "en": "Sent as a bearer token, to that endpoint and nowhere else.",
+        "zh_CN": "作为 bearer token 发给上面那个地址，不会发给别处。"
+      }
+    },
+    {
+      "key": "action",
+      "label": {
+        "en": "What to do with a verdict",
+        "zh_CN": "判定后怎么处理"
+      },
+      "type": "enum",
+      "options": [
+        "flag",
+        "off"
+      ],
+      "default": "flag",
+      "description": {
+        "en": "Flag for a moderator to settle. There is no delete: a model's mistake should cost ten seconds in the queue, not somebody their post.",
+        "zh_CN": "打旗标交给版主判断。没有「删除」这个选项：模型判错的代价应该是版主花十秒，而不是某人丢一个帖子。"
+      }
+    },
+    {
+      "key": "watch_new_accounts",
+      "label": {
+        "en": "Also judge first-time posters",
+        "zh_CN": "也判断首次发帖的账号"
+      },
+      "type": "boolean",
+      "default": false,
+      "description": {
+        "en": "Off, only reported accounts are looked at. On catches more, and costs more.",
+        "zh_CN": "关闭时只看被举报的账号。打开能抓到更多，也更费钱。"
+      }
+    },
+    {
+      "key": "exempt_trust_level",
+      "label": {
+        "en": "Never judge members at or above this trust level",
+        "zh_CN": "不判断信任等级不低于此值的成员"
+      },
+      "type": "integer",
+      "default": 2
+    },
+    {
+      "key": "min_posts",
+      "label": {
+        "en": "Fewest posts worth judging from",
+        "zh_CN": "少于多少帖就不判断"
+      },
+      "type": "integer",
+      "default": 3,
+      "description": {
+        "en": "A model handed one sentence still answers, confidently.",
+        "zh_CN": "只给模型一句话，它照样会很自信地给出答案。"
+      }
+    },
+    {
+      "key": "trust_shared",
+      "label": {
+        "en": "Accept verdicts other nodes reached",
+        "zh_CN": "接受其他节点得出的判定"
+      },
+      "type": "boolean",
+      "default": false,
+      "description": {
+        "en": "Saves the cost of asking twice, at the price of somebody else's model deciding about your members.",
+        "zh_CN": "省下重复提问的钱，代价是别人的模型在替你的成员做判断。"
+      }
+    },
+    {
+      "key": "verdict_days",
+      "label": {
+        "en": "How long a verdict lasts, in days",
+        "zh_CN": "判定多少天后过期"
+      },
+      "type": "integer",
+      "default": 90
+    }
+  ]
+}

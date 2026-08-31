@@ -1,0 +1,20 @@
+{
+  "slug": "repo-info",
+  "name": "Repo info",
+  "entry": "src/main.js",
+  "scopes": [
+    "kv",
+    "post.read",
+    "post.write",
+    "http"
+  ],
+  "surface": "service",
+  "placement": "many",
+  "triggers": [
+    "post_created",
+    "topic_created"
+  ],
+  "domains": [
+    "api.github.com"
+  ]
+}

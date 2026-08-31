@@ -1,0 +1,18 @@
+{
+  "slug": "remind-me",
+  "name": "Remind me",
+  "entry": "src/main.js",
+  "scopes": [
+    "kv",
+    "schedule",
+    "post.read",
+    "post.write"
+  ],
+  "surface": "service",
+  "placement": "many",
+  "triggers": [
+    "post_created",
+    "topic_created"
+  ],
+  "domains": []
+}

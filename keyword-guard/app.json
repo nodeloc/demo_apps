@@ -1,0 +1,33 @@
+{
+  "slug": "keyword-guard",
+  "name": "Keyword guard",
+  "entry": "src/main.js",
+  "scopes": [
+    "kv",
+    "post.read",
+    "post.write"
+  ],
+  "surface": "service",
+  "placement": "many",
+  "triggers": [
+    "post_created",
+    "post_edited",
+    "topic_created"
+  ],
+  "domains": [],
+  "settings": [
+    {
+      "key": "rules",
+      "label": {
+        "en": "Rules",
+        "zh_CN": "规则"
+      },
+      "type": "text",
+      "required": true,
+      "description": {
+        "en": "One a line, pattern first: `how do I reset my password => You can do it yourself at /my/preferences/account.` The pattern is a regular expression and is not case-sensitive. A pattern that will not compile costs you that rule, not the app.",
+        "zh_CN": "一行一条，先写匹配式：`忘记密码 => 打开 /my/preferences/account 就能自己改。` 匹配式是正则表达式，不区分大小写。写错的匹配式只是这条规则失效，不影响整个应用。"
+      }
+    }
+  ]
+}

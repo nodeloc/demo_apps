@@ -1,0 +1,30 @@
+{
+  "slug": "welcome-bot",
+  "name": "Welcome bot",
+  "entry": "src/main.js",
+  "scopes": [
+    "kv",
+    "post.read",
+    "post.write"
+  ],
+  "surface": "service",
+  "placement": "many",
+  "triggers": [
+    "topic_created"
+  ],
+  "domains": [],
+  "settings": [
+    {
+      "key": "greeting",
+      "label": {
+        "en": "Greeting",
+        "zh_CN": "问候语"
+      },
+      "type": "text",
+      "description": {
+        "en": "Said once, to a member's first topic. {username} becomes their name. Leave blank and each newcomer is greeted in the language they read the site in.",
+        "zh_CN": "对成员的第一个主题说一次。{username} 会替换成他们的用户名。留空则按每个新人自己的界面语言问候。"
+      }
+    }
+  ]
+}
