@@ -52,6 +52,19 @@
         "en": "Nobody can reply under the greeting itself; the rest of the topic is untouched.",
         "zh_CN": "欢迎回复本身不允许被回复，主题的其余部分不受影响。"
       }
+    },
+    {
+      "key": "collapse_reply",
+      "label": {
+        "en": "Fold the greeting",
+        "zh_CN": "默认折叠"
+      },
+      "type": "boolean",
+      "default": false,
+      "description": {
+        "en": "The greeting opens folded to a one-line bar in the nested view; the reader unfolds it with one click.",
+        "zh_CN": "欢迎回复在嵌套视图里默认收起成一行，读者点一下即可展开。"
+      }
     }
   ],
   "kind": "bot"

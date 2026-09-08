@@ -17,6 +17,7 @@ Whoever installs it can set three options, and change them later:
 | `greeting` | `Welcome, @{username}. This is your first topic here — have a look around, and someone will be along shortly.` |
 | `pin_reply` | off — keep the greeting at the top of the member's topic |
 | `lock_reply` | off — let nobody reply under the greeting itself |
+| `collapse_reply` | off — open the greeting folded in the nested view |
 
 `{username}` is replaced with the author's name. Everything else is written as
 you type it.

@@ -58,6 +58,7 @@ export async function onTrigger(ctx, api) {
         // and the bot only reaches it in a node it moderates.
         pin: ctx.config?.pin_reply === true,
         lock: ctx.config?.lock_reply === true,
+        collapse: ctx.config?.collapse_reply === true,
       },
     ],
   };
