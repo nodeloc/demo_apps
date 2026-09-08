@@ -7,8 +7,10 @@
  * getting right, not the sentence.
  *
  * Config (set by whoever installs it):
- *   greeting  a template; {username} is replaced. Left blank, the app greets
- *             each newcomer in the language they read the site in.
+ *   greeting    a template; {username} is replaced. Left blank, the app
+ *               greets each newcomer in the language they read the site in.
+ *   pin_reply   keep the greeting at the top of the topic.
+ *   lock_reply  let nobody reply under the greeting itself.
  */
 
 import { translator } from "./i18n.js";
@@ -47,7 +49,16 @@ export async function onTrigger(ctx, api) {
       // category — the note that we greeted them is rolled back with it, and
       // the next topic gets another try.
       { type: "kv.set", key, value: post.topic_id },
-      { type: "post.reply", topic_id: post.topic_id, raw: greeting },
+      {
+        type: "post.reply",
+        topic_id: post.topic_id,
+        raw: greeting,
+        // Both ride on the reply itself: the post they act on does not exist
+        // until it has been written. Either needs the moderate.topic scope,
+        // and the bot only reaches it in a node it moderates.
+        pin: ctx.config?.pin_reply === true,
+        lock: ctx.config?.lock_reply === true,
+      },
     ],
   };
 }
